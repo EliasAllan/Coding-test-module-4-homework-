@@ -6,7 +6,9 @@ console.log("Sam, your questions");
 // need to keep a count of the question that is displayed
 // need to keep score
 // need to keep the time
-
+var questions ;
+var score ;
+var time ;
 
 function startTimer(){
 

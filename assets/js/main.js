@@ -1,14 +1,25 @@
 // this is the starting point for this commentary,
 // please add more steps
 // there may be more steps and corrections to be made in future
-console.log("Sam, your questions");
+
+
 // need a collection of objects that hold the questions
+console.log("Sam, your questions");
+var firstquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
+var secondquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
+var thirdquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
+var fourthquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
+
+
+
 // need to keep a count of the question that is displayed
+
+
 // need to keep score
+var score = '';
+
 // need to keep the time
-var questions ;
-var score ;
-var time ;
+var time = '';
 
 function startTimer(){
 
@@ -47,3 +58,4 @@ function startQuiz(){
 }
 
 // eventListener here // when i click the start button
+

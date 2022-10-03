@@ -1,3 +1,4 @@
+
 // this is the starting point for this commentary,
 // please add more steps
 // there may be more steps and corrections to be made in future
@@ -5,10 +6,10 @@
 
 // need a collection of objects that hold the questions
 console.log("Sam, your questions");
-var firstquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
-var secondquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
-var thirdquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
-var fourthquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
+var firstquestion = {answer1 : true, answer2 : false, answer3 : false, answer4 :false }
+var secondquestion = {answer1 : false, answer2 : true, answer3 : false, answer4 :false }
+var thirdquestion = {answer1 : false, answer2 : true, answer3 : false, answer4 :false }
+var fourthquestion = {answer1 : false, answer2 : false, answer3 : false, answer4 :true }
 
 
 
@@ -19,12 +20,36 @@ var fourthquestion = {answer1 : 5, answer2 : -1, answer3 : -1, answer4 :-1 }
 var score = '';
 
 // need to keep the time
-var time = '';
+var timeleft = 120 ;
+var timeEl = document.querySelector(".time");
+var clickbtn = document.querySelector("#startbutton")
 
-function startTimer(){
-
+function startTimer() {
+    addQuestion();
+    var timer = setInterval(function()  {
+      timeleft--;
+      timeEl.textContent = "you have " + timeleft + " seconds to finish the test ";
+    
+      if(timeleft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timer);
+        // Calls function to create and append
+        // addQuestion();
+      }
+    }, 1000);
 }
-function addQuestion(){
+
+
+
+    function addQuestion(){
+      var questionsEl = document.querySelector(".questions");
+      var answersEl = document.createElement("button");
+      questionsEl.textContent= "which one of these is not a primitive data type ?";     
+      answersEl.textContent="Boolean";
+      questionsEl.appendChild(answersEl);
+        
+} 
+    // answersEl.textContent= "Boolean";
   // create the question elements
 
   // modify the text/attributes
@@ -48,7 +73,7 @@ function addQuestion(){
 
     // if no other questions,
     // go to highscore screen
-}
+
 
 function startQuiz(){
   // timer starts and I am presented with a question
@@ -59,3 +84,5 @@ function startQuiz(){
 
 // eventListener here // when i click the start button
 
+// startTimer();
+clickbtn.addEventListener("click",startTimer)

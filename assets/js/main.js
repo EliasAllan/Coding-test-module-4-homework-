@@ -17,22 +17,21 @@ var questions = [
     rightanswer: 2,
     
   },
-  // {
-  //   id: 3,
-  //   question: "",
-  //   answer1 : false, 
-  //   answer2 : true, 
-  //   answer3 : false, 
-  //   answer4 :false 
-  // },
-  // {
-  //   id: 4,
-  //   question: "",
-  //   answer1 : false, 
-  //   answer2 : false, 
-  //   answer3 : false, 
-  //   answer4 :true 
-  // }
+  {
+    question: "What are the steps you need to take to add something to a page",
+    answers: ["Write code , add semicolon", 
+              "Create , Modify , Append", 
+              "Add head, Add body, Add footer", 
+              "Margin, border, padding"] ,
+    rightanswer: 2,
+    
+  },
+  {
+    question: "What comes after the curly brackets in a function ?",
+    answers: ["a for loop", "what the function excecutes", "a variable", "a method"] ,
+    rightanswer: 4,
+    
+  }
 
 ]
 
@@ -43,20 +42,20 @@ var questions = [
 
 
 // need to keep a count of the question that is displayed
-var question = 1;
-2;
-3;
-4;
+var question = 1
 
 // need to keep score
 var score = '';
 
 // need to keep the time
 var timeleft = 120;
+
+
 var timeEl = document.querySelector(".time");
 var clickbtn = document.querySelector("#startbutton")
 
 function startTimer() {
+  clickbtn.setAttribute("style", "display:none")
   nextquestion();
   var timer = setInterval(function() {
     timeleft--;
@@ -71,10 +70,10 @@ function startTimer() {
   }, 1000);
 }
 
-
+var questionNumber = 1
 
 function nextquestion() {
-  var questionNumber = 1
+  
   if (questionNumber === 1) {
     questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
@@ -88,14 +87,26 @@ function nextquestion() {
     }
   
   } else if (questionNumber === 2) {
+    questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
     questionsEl.textContent = questions[1].question;
 
-    for (var i = 0; i < questions[0].answers.length; i++) {
+    for (var i = 0; i < questions[1].answers.length; i++) {
       var answersEl = document.createElement("button");
       questionsEl.appendChild(answersEl);
-      console.log(questions[0].answers[i]);
-      answersEl.textContent = questions[0].answers[i];
+      console.log(questions[1].answers[i]);
+      answersEl.textContent = questions[1].answers[i];
+    }
+  } else if (questionNumber === 3) {
+    questionNumber = questionNumber + 1;
+    var questionsEl = document.querySelector(".questions");
+    questionsEl.textContent = questions[2].question;
+
+    for (var i = 0; i < questions[2].answers.length; i++) {
+      var answersEl = document.createElement("button");
+      questionsEl.appendChild(answersEl);
+      console.log(questions[2].answers[i]);
+      answersEl.textContent = questions[2].answers[i];
     }
   }
 }

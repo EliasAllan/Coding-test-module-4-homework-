@@ -57,11 +57,11 @@ var timeEl = document.querySelector(".time");
 var clickbtn = document.querySelector("#startbutton")
 
 function startTimer() {
-    
+    addQuestion();
     var timer = setInterval(function()  {
       timeleft--;
       timeEl.textContent = "you have " + timeleft + " seconds to finish the test ";
-      addQuestion();
+
       if(timeleft === 0) {
         // Stops execution of action at set interval
         clearInterval(timer);
@@ -74,14 +74,19 @@ function startTimer() {
   // var questions = [1 , 2 , 3 ,4]
 
     function addQuestion(){
-
+     
+      var answersEl = document.createElement("button");
       var questionsEl = document.querySelector(".questions");
-      questionsEl.textContent= questions[0].question; 
-
-     for( i = 0 ; i < questions.answers.length; i++){
-      
-     }
       questionsEl.appendChild(answersEl);
+      questionsEl.textContent= questions[0].question; 
+    
+      for (var i = 0; i < questions[0].answers.length; i++) {
+        console.log(questions[0].answers[i]);
+        
+        answersEl.textContent = questions[0].answers[i];
+      }
+      
+      
 
     
         

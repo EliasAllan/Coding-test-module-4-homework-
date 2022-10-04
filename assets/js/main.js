@@ -52,11 +52,13 @@ var timeleft = 120;
 
 
 var timeEl = document.querySelector(".time");
-var clickbtn = document.querySelector("#startbutton")
+var startBtn = document.querySelector("#startbutton")
+
+
 
 function startTimer() {
-  clickbtn.setAttribute("style", "display:none")
-  nextquestion();
+  startBtn.setAttribute("style", "display:none")
+  
   var timer = setInterval(function() {
     timeleft--;
     timeEl.textContent = "you have " + timeleft + " seconds to finish the test ";
@@ -68,10 +70,12 @@ function startTimer() {
       // nextquestion();
     }
   }, 1000);
+  nextquestion(); 
 }
 
 var questionNumber = 1
-
+var answerBtns = document.querySelector(".questions")
+answerBtns.addEventListener("click", nextquestion)
 function nextquestion() {
   
   if (questionNumber === 1) {
@@ -80,10 +84,12 @@ function nextquestion() {
     questionsEl.textContent = questions[0].question;
 
     for (var i = 0; i < questions[0].answers.length; i++) {
+      
       var answersEl = document.createElement("button");
+      answersEl.textContent = questions[0].answers[i];
       questionsEl.appendChild(answersEl);
       console.log(questions[0].answers[i]);
-      answersEl.textContent = questions[0].answers[i];
+      
     }
   
   } else if (questionNumber === 2) {
@@ -147,4 +153,4 @@ function startQuiz() {
 // eventListener here // when i click the start button
 
 // startTimer();
-clickbtn.addEventListener("click", startTimer)
+startBtn.addEventListener("click", startTimer)

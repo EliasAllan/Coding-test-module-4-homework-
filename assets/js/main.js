@@ -6,7 +6,39 @@
 
 // need a collection of objects that hold the questions
 console.log("Sam, your questions");
-var firstquestion = {answer1 : true, answer2 : false, answer3 : false, answer4 :false }
+var questions = [
+  {
+    question: "Which one is not a primitive type ?",
+    answers: ["Array", "boolean", "number", "string"],
+    
+  },
+  // {   
+  //   id: 2,
+  //   question: "What comes after the curly brackets in a function ?",
+  //   answer1 : false, 
+  //   answer2 : true, 
+  //   answer3 : false, 
+  //   answer4 :false 
+  // },
+  // {
+  //   id: 3,
+  //   question: "",
+  //   answer1 : false, 
+  //   answer2 : true, 
+  //   answer3 : false, 
+  //   answer4 :false 
+  // },
+  // {
+  //   id: 4,
+  //   question: "",
+  //   answer1 : false, 
+  //   answer2 : false, 
+  //   answer3 : false, 
+  //   answer4 :true 
+  // }
+
+]
+
 var secondquestion = {answer1 : false, answer2 : true, answer3 : false, answer4 :false }
 var thirdquestion = {answer1 : false, answer2 : true, answer3 : false, answer4 :false }
 var fourthquestion = {answer1 : false, answer2 : false, answer3 : false, answer4 :true }
@@ -14,7 +46,7 @@ var fourthquestion = {answer1 : false, answer2 : false, answer3 : false, answer4
 
 
 // need to keep a count of the question that is displayed
-
+var question = '';
 
 // need to keep score
 var score = '';
@@ -25,11 +57,11 @@ var timeEl = document.querySelector(".time");
 var clickbtn = document.querySelector("#startbutton")
 
 function startTimer() {
-    addQuestion();
+    
     var timer = setInterval(function()  {
       timeleft--;
       timeEl.textContent = "you have " + timeleft + " seconds to finish the test ";
-    
+      addQuestion();
       if(timeleft === 0) {
         // Stops execution of action at set interval
         clearInterval(timer);
@@ -39,14 +71,19 @@ function startTimer() {
     }, 1000);
 }
 
-
+  // var questions = [1 , 2 , 3 ,4]
 
     function addQuestion(){
+
       var questionsEl = document.querySelector(".questions");
-      var answersEl = document.createElement("button");
-      questionsEl.textContent= "which one of these is not a primitive data type ?";     
-      answersEl.textContent="Boolean";
+      questionsEl.textContent= questions[0].question; 
+
+     for( i = 0 ; i < questions.answers.length; i++){
+      
+     }
       questionsEl.appendChild(answersEl);
+
+    
         
 } 
     // answersEl.textContent= "Boolean";

@@ -22,3 +22,9 @@ h1{
 aside{
     display:flex;
 }
+.class{
+    display:none
+}
+.hidden{
+    display: none;
+}

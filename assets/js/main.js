@@ -102,6 +102,7 @@ function nextquestion() {
     for (var i = 0; i < questions[0].answers.length; i++) {
 
       var answersEl = document.createElement("button");
+      answersEl.setAttribute("style", "color: white ; background-color: blue")
       answersEl.id = 'Btn' + [i];
       answersEl.onclick = function(e) {
         console.log(e.target);
@@ -133,6 +134,7 @@ function nextquestion() {
     for (var i = 0; i < questions[1].answers.length; i++) {
 
       var answersEl = document.createElement("button");
+      answersEl.setAttribute("style", "color: white ; background-color: blue")
       answersEl.id = 'Btn' + [i];
       answersEl.onclick = function(e) {
         console.log(e.target);
@@ -160,12 +162,13 @@ function nextquestion() {
 
     for (var i = 0; i < questions[2].answers.length; i++) {
       var answersEl = document.createElement("button");
+      answersEl.setAttribute("style", "color: white ; background-color: blue")
       answersEl.id = 'Btn' + [i];
       answersEl.onclick = function(e) {
         console.log(e.target);
         if (e.target.textContent === "Create , Modify , Append") {
           score = score + 5;
-          rightwrongEl.textContent = "Right !!!";
+          rightwrongEl.textContet = "Right !!!";
           rightwrongEl.setAttribute("style", "color: green")
         } else {
           timeleft = timeleft - 5;
@@ -187,6 +190,7 @@ function nextquestion() {
 
     for (var i = 0; i < questions[3].answers.length; i++) {
       var answersEl = document.createElement("button");
+      answersEl.setAttribute("style", "color: white ; background-color: blue")
       answersEl.id = 'Btn' + [i];
       answersEl.onclick = function(e) {
         console.log(e.target);
@@ -211,11 +215,11 @@ function nextquestion() {
   } else {
     var questionsEl = document.querySelector(".questions");
     var highscoreEl = document.querySelector("#highscore");
+    var highscoreEl = document.createElement("form");
     questionsEl.setAttribute("style", "display: none");
-    rightwrongEl.setAttribute("style", "display: none");
     timeEl.setAttribute("style", "display: none");
-    // var highscoreEl = document.createElement("form");
-    // highscoreEl.setAttribute("method", "post");
+    highscoreEl.setAttribute("method", "post");
+    // rightwrongEl.setAttribute("style", "display: none");
     // highscoreEl.setAttribute("action", "submit.php");
 
   }
@@ -255,7 +259,7 @@ function startQuiz() {
 }
 
 // eventListener here // when i click the start button
-
+// answersEl.setAttribute("style", "background-color: blue")
 // startTimer();
 startBtn.addEventListener("click", startTimer)
 startBtn.onclick = function() {

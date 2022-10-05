@@ -1,48 +1,50 @@
 // this is the starting point for this commentary,
 // please add more steps
 // there may be more steps and corrections to be made in future
-
-
+var score = 0;
+var scoreEl = document.querySelector("#score")
+scoreEl.textContent = "You have " + score + " points";
+scoreEl.setAttribute("style", "font-size: 23px")
 // need a collection of objects that hold the questions
 console.log("let's crush this");
-var questions = [
-  {
+var questions = [{
     question: "Which one is not a primitive type ?",
     answers: ["Array", "boolean", "number", "string"],
-    rightanswer: 1,
+    rightanswer: 0,
   },
-  {   
+  {
     question: "What comes after the curly brackets in a function ?",
-    answers: ["A for loop", "The code the function excecutes", "A variable", "A method"] ,
-    rightanswer: 2,
-    
+    answers: ["A for loop", "The code the function excecutes", "A variable", "A method"],
+    rightanswer: 1,
+
   },
   {
     question: "What are the steps you need to take to add something to a page ?",
-    answers: ["Write code , add semicolon", 
-              "Create , Modify , Append", 
-              "Add head, Add body, Add footer", 
-              "Margin, border, padding"] ,
-    rightanswer: 2,
-    
+    answers: ["Write code , add semicolon",
+      "Create , Modify , Append",
+      "Add head, Add body, Add footer",
+      "Margin, border, padding"
+    ],
+    rightanswer: 1,
+
   },
   {
     question: "What does DOM stand for in JavaScript?",
-    answers: ["Daily Object Method", "Document Onsite Modification", "Door Open Model", "Document Object Model"] ,
-    rightanswer: 4,
-    
+    answers: ["Daily Object Method", "Document Onsite Modification", "Door Open Model", "Document Object Model"],
+    rightanswer: 3,
+
   }
 
 ]
 
 // need to keep a count of the question that is displayed
-var questionNumber = 1
+var questionNumber = 0
 
 // need to keep score
-var score = 0;
+
 
 // need to keep the time
-var timeleft = 120;
+var timeleft = 90;
 
 
 var timeEl = document.querySelector(".time");
@@ -64,96 +66,156 @@ function startTimer() {
       // nextquestion();
     }
   }, 1000);
-  
+
 }
+
 var Btn0El = document.querySelector("#Btn0")
 var Btn1El = document.querySelector("#Btn1")
 var Btn2El = document.querySelector("#Btn2")
 var Btn3El = document.querySelector("#Btn3")
 
-// Btn0El.addEventListener("click", )
+
+// Btn0El.addEventListener("click", scoredata)
 
 
 
-// function scoredata(){
-//   if(answersEl.id
+
 
 // }
 
+// answersEl.onclick = function(e){
+//   console.log(e.target)
+//   nextquestion()
+//  }
 
-
-
+var rightwrongEl = document.querySelector(".rightwrong")
 
 // var answerBtns = document.querySelector("button")
 // answerBtns.addEventListener("click", nextquestion)
 function nextquestion() {
-  
-  if (questionNumber === 1) {
+
+  if (questionNumber === 0) {
     questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
     questionsEl.textContent = questions[0].question;
-    
+
     for (var i = 0; i < questions[0].answers.length; i++) {
-      
+
       var answersEl = document.createElement("button");
-      answersEl.id = 'Btn'+[i];
-       answersEl.onclick = function(){
-        
+      answersEl.id = 'Btn' + [i];
+      answersEl.onclick = function(e) {
+        console.log(e.target);
+        if (e.target.textContent === "Array") {
+          score = score + 5;
+          rightwrongEl.textContent = "Right !!!";
+          rightwrongEl.setAttribute("style", "color: green")
+        } else {
+          timeleft = timeleft - 5;
+          score = score - 1;
+          rightwrongEl.textContent = "Wrong !!!";
+          rightwrongEl.setAttribute("style", "color: red")
+        }
+        scoreEl.textContent = "You have " + score + " points";
         nextquestion()
-       }  
+      }
       answersEl.textContent = questions[0].answers[i];
       questionsEl.appendChild(answersEl);
       console.log(questions[0].answers[i]);
-      
+
+
     }
-  
-  } else if (questionNumber === 2) {
+
+  } else if (questionNumber === 1) {
     questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
     questionsEl.textContent = questions[1].question;
 
     for (var i = 0; i < questions[1].answers.length; i++) {
-      
+
       var answersEl = document.createElement("button");
-      answersEl.id = 'Btn'+[i];
-      answersEl.onclick = function(){
+      answersEl.id = 'Btn' + [i];
+      answersEl.onclick = function(e) {
+        console.log(e.target);
+        if (e.target.textContent === "The code the function excecutes") {
+          score = score + 5;
+          rightwrongEl.textContent = "Right !!!";  
+          rightwrongEl.setAttribute("style", "color: green")   
+        } else {
+          timeleft = timeleft - 5;
+          score = score - 1;
+          rightwrongEl.textContent = "Wrong !!!";
+          rightwrongEl.setAttribute("style", "color: red")
+        }
+        scoreEl.textContent = "You have " + score + " points";
         nextquestion()
-       }  
+      }
       questionsEl.appendChild(answersEl);
       console.log(questions[1].answers[i]);
       answersEl.textContent = questions[1].answers[i];
     }
-  } else if (questionNumber === 3) {
+  } else if (questionNumber === 2) {
     questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
     questionsEl.textContent = questions[2].question;
 
     for (var i = 0; i < questions[2].answers.length; i++) {
       var answersEl = document.createElement("button");
-      answersEl.id = 'Btn'+[i];
-      answersEl.onclick = function(){
+      answersEl.id = 'Btn' + [i];
+      answersEl.onclick = function(e) {
+        console.log(e.target);
+        if (e.target.textContent === "Create , Modify , Append") {
+          score = score + 5;
+          rightwrongEl.textContent = "Right !!!";
+          rightwrongEl.setAttribute("style", "color: green")
+        } else {
+          timeleft = timeleft - 5;
+          score = score - 1;
+          rightwrongEl.textContent = "Wrong !!!";
+          rightwrongEl.setAttribute("style", "color: red")
+        }
+        scoreEl.textContent = "You have " + score + " points";
         nextquestion()
-       }  
+      }
       questionsEl.appendChild(answersEl);
       console.log(questions[2].answers[i]);
       answersEl.textContent = questions[2].answers[i];
     }
-  }else if (questionNumber === 4) {
+  } else if (questionNumber === 3) {
     questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
     questionsEl.textContent = questions[3].question;
 
     for (var i = 0; i < questions[3].answers.length; i++) {
       var answersEl = document.createElement("button");
-      answersEl.id = 'Btn'+[i];
-      answersEl.onclick = function(){
+      answersEl.id = 'Btn' + [i];
+      answersEl.onclick = function(e) {
+        console.log(e.target);
+        if (e.target.textContent === "Document Object Model") {
+          score = score + 5;
+          rightwrongEl.textContent = "Right !!!";
+          rightwrongEl.setAttribute("style", "color: green")
+        } else {
+          timeleft = timeleft - 5;
+          score = score - 1;
+          rightwrongEl.textContent = "Wrong !!!";
+          rightwrongEl.setAttribute("style", "color: red")
+        }
+        scoreEl.textContent = "You have " + score + " points";
         nextquestion()
-       }  
+      }
       questionsEl.appendChild(answersEl);
       console.log(questions[3].answers[i]);
       answersEl.textContent = questions[3].answers[i];
-      
+
     }
+  } else {
+    var questionsEl = document.querySelector(".questions");
+    var highscoreEl = document.querySelector("#highscore");
+    questionsEl.setAttribute("style", "display: none");
+    // var highscoreEl = document.createElement("form");
+    // highscoreEl.setAttribute("method", "post");
+    // highscoreEl.setAttribute("action", "submit.php");
+   
   }
 }
 
@@ -194,6 +256,6 @@ function startQuiz() {
 
 // startTimer();
 startBtn.addEventListener("click", startTimer)
-startBtn.onclick = function (){
+startBtn.onclick = function() {
   nextquestion()
 }

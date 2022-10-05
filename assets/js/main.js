@@ -4,7 +4,7 @@
 
 
 // need a collection of objects that hold the questions
-console.log("Sam, your questions");
+console.log("let's crush this");
 var questions = [
   {
     question: "Which one is not a primitive type ?",
@@ -13,12 +13,12 @@ var questions = [
   },
   {   
     question: "What comes after the curly brackets in a function ?",
-    answers: ["a for loop", "what the function excecutes", "a variable", "a method"] ,
+    answers: ["A for loop", "The code the function excecutes", "A variable", "A method"] ,
     rightanswer: 2,
     
   },
   {
-    question: "What are the steps you need to take to add something to a page",
+    question: "What are the steps you need to take to add something to a page ?",
     answers: ["Write code , add semicolon", 
               "Create , Modify , Append", 
               "Add head, Add body, Add footer", 
@@ -27,22 +27,16 @@ var questions = [
     
   },
   {
-    question: "What comes after the curly brackets in a function ?",
-    answers: ["a for loop", "what the function excecutes", "a variable", "a method"] ,
+    question: "What does DOM stand for in JavaScript?",
+    answers: ["Daily Object Method", "Document Onsite Modification", "Door Open Model", "Document Object Model"] ,
     rightanswer: 4,
     
   }
 
 ]
 
-// var secondquestion = {answer1 : false, answer2 : true, answer3 : false, answer4 :false }
-// var thirdquestion = {answer1 : false, answer2 : true, answer3 : false, answer4 :false }
-// var fourthquestion = {answer1 : false, answer2 : false, answer3 : false, answer4 :true }
-
-
-
 // need to keep a count of the question that is displayed
-var question = 1
+var questionNumber = 1
 
 // need to keep score
 var score = '';
@@ -53,15 +47,15 @@ var timeleft = 120;
 
 var timeEl = document.querySelector(".time");
 var startBtn = document.querySelector("#startbutton")
-
+var SpanEl = document.querySelector("#title")
 
 
 function startTimer() {
   startBtn.setAttribute("style", "display:none")
-  
+  SpanEl.setAttribute("style", "display:none")
   var timer = setInterval(function() {
     timeleft--;
-    timeEl.textContent = "you have " + timeleft + " seconds to finish the test ";
+    timeEl.textContent = "You have " + timeleft + " seconds to finish the test ";
 
     if (timeleft === 0) {
       // Stops execution of action at set interval
@@ -70,11 +64,11 @@ function startTimer() {
       // nextquestion();
     }
   }, 1000);
-  nextquestion(); 
+  
 }
 
-var questionNumber = 1
-var answerBtns = document.querySelector(".questions")
+
+var answerBtns = document.querySelector("button")
 answerBtns.addEventListener("click", nextquestion)
 function nextquestion() {
   
@@ -86,6 +80,11 @@ function nextquestion() {
     for (var i = 0; i < questions[0].answers.length; i++) {
       
       var answersEl = document.createElement("button");
+      answersEl.id = 'Btn'+[i];
+       answersEl.onclick = function(){
+        
+        nextquestion()
+       }  
       answersEl.textContent = questions[0].answers[i];
       questionsEl.appendChild(answersEl);
       console.log(questions[0].answers[i]);
@@ -98,7 +97,12 @@ function nextquestion() {
     questionsEl.textContent = questions[1].question;
 
     for (var i = 0; i < questions[1].answers.length; i++) {
+      
       var answersEl = document.createElement("button");
+      answersEl.id = 'Btn'+[i];
+      answersEl.onclick = function(){
+        nextquestion()
+       }  
       questionsEl.appendChild(answersEl);
       console.log(questions[1].answers[i]);
       answersEl.textContent = questions[1].answers[i];
@@ -110,9 +114,29 @@ function nextquestion() {
 
     for (var i = 0; i < questions[2].answers.length; i++) {
       var answersEl = document.createElement("button");
+      answersEl.id = 'Btn'+[i];
+      answersEl.onclick = function(){
+        nextquestion()
+       }  
       questionsEl.appendChild(answersEl);
       console.log(questions[2].answers[i]);
       answersEl.textContent = questions[2].answers[i];
+    }
+  }else if (questionNumber === 4) {
+    questionNumber = questionNumber + 1;
+    var questionsEl = document.querySelector(".questions");
+    questionsEl.textContent = questions[3].question;
+
+    for (var i = 0; i < questions[3].answers.length; i++) {
+      var answersEl = document.createElement("button");
+      answersEl.id = 'Btn'+[i];
+      answersEl.onclick = function(){
+        nextquestion()
+       }  
+      questionsEl.appendChild(answersEl);
+      console.log(questions[3].answers[i]);
+      answersEl.textContent = questions[3].answers[i];
+      
     }
   }
 }
@@ -154,3 +178,6 @@ function startQuiz() {
 
 // startTimer();
 startBtn.addEventListener("click", startTimer)
+startBtn.onclick = function (){
+  nextquestion()
+}

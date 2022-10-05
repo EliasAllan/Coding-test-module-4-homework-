@@ -39,7 +39,7 @@ var questions = [
 var questionNumber = 1
 
 // need to keep score
-var score = '';
+var score = 0;
 
 // need to keep the time
 var timeleft = 120;
@@ -66,17 +66,33 @@ function startTimer() {
   }, 1000);
   
 }
+var Btn0El = document.querySelector("#Btn0")
+var Btn1El = document.querySelector("#Btn1")
+var Btn2El = document.querySelector("#Btn2")
+var Btn3El = document.querySelector("#Btn3")
+
+// Btn0El.addEventListener("click", )
 
 
-var answerBtns = document.querySelector("button")
-answerBtns.addEventListener("click", nextquestion)
+
+// function scoredata(){
+//   if(answersEl.id
+
+// }
+
+
+
+
+
+// var answerBtns = document.querySelector("button")
+// answerBtns.addEventListener("click", nextquestion)
 function nextquestion() {
   
   if (questionNumber === 1) {
     questionNumber = questionNumber + 1;
     var questionsEl = document.querySelector(".questions");
     questionsEl.textContent = questions[0].question;
-
+    
     for (var i = 0; i < questions[0].answers.length; i++) {
       
       var answersEl = document.createElement("button");

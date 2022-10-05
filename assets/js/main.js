@@ -1,11 +1,8 @@
 // this is the starting point for this commentary,
 // please add more steps
 // there may be more steps and corrections to be made in future
-var score = 0;
-var scoreEl = document.querySelector("#score")
-scoreEl.textContent = "You have " + score + " points";
-scoreEl.setAttribute("style", "font-size: 23px")
-// need a collection of objects that hold the questions
+
+// collection of objects that hold the questions
 console.log("let's crush this");
 var questions = [{
     question: "Which one is not a primitive type ?",
@@ -37,14 +34,17 @@ var questions = [{
 
 ]
 
-// need to keep a count of the question that is displayed
+// count of the question that is displayed
 var questionNumber = 0
-
+var highscoreEl = document.querySelector("#highscore");
 // need to keep score
-
+var score = 0;
+var scoreEl = document.querySelector("#score")
+scoreEl.textContent = "You have " + score + " points";
+scoreEl.setAttribute("style", "font-size: 23px")
 
 // need to keep the time
-var timeleft = 90;
+var timeleft = 60;
 
 
 var timeEl = document.querySelector(".time");
@@ -138,8 +138,8 @@ function nextquestion() {
         console.log(e.target);
         if (e.target.textContent === "The code the function excecutes") {
           score = score + 5;
-          rightwrongEl.textContent = "Right !!!";  
-          rightwrongEl.setAttribute("style", "color: green")   
+          rightwrongEl.textContent = "Right !!!";
+          rightwrongEl.setAttribute("style", "color: green")
         } else {
           timeleft = timeleft - 5;
           score = score - 1;
@@ -212,10 +212,12 @@ function nextquestion() {
     var questionsEl = document.querySelector(".questions");
     var highscoreEl = document.querySelector("#highscore");
     questionsEl.setAttribute("style", "display: none");
+    rightwrongEl.setAttribute("style", "display: none");
+    timeEl.setAttribute("style", "display: none");
     // var highscoreEl = document.createElement("form");
     // highscoreEl.setAttribute("method", "post");
     // highscoreEl.setAttribute("action", "submit.php");
-   
+
   }
 }
 

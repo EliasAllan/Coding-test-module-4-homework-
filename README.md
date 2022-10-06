@@ -8,8 +8,8 @@ This is a coding quiz created with Javascript . It's designed to consolidate wha
 
 Click the Start button
 Choose the correct answers 
-The next page will tell you if you got the answwer right or wrong
-At the end, add you initials to register your high score(not implemented, stored to local storage)
+The next page will tell you if you got the answer right or wrong
+At the end, add you initials to register your high score(not finished)
 
 
 ## Screenshots

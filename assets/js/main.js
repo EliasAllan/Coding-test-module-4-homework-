@@ -48,6 +48,7 @@ var questions = [
 var questionNumber = 0;
 var highscoreEl = document.querySelector("#highscore");
 // need to keep score
+var highscorearr = [];
 var score = 0;
 var scoreEl = document.querySelector("#score");
 scoreEl.textContent = "You have " + score + " points";
@@ -121,6 +122,25 @@ function checkAnswer(event) {
   endQuiz();
 }
 
+function init() {
+  // Get stored todos from localStorage
+  var storedscores = JSON.parse(localStorage.getItem("scores"));
+
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedscores !== null) {
+    highscorearr = storedscores;
+  }
+console.log(highscorearr)
+  // This is a helper function that will render todos to the DOM
+  // renderTodos();
+}
+init();
+
+function storehighscores() {
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("scores", JSON.stringify(highscorearr));
+}
+
 function logCorrect() {
   console.log("Correct");
   score = score + 5;
@@ -152,19 +172,19 @@ function endQuiz() {
   timeEl.setAttribute("style", "display: none");
   formEl.classList.remove("hidden");
   console.log(formEl);
-  renderStorage()
+  // renderStorage()
 }
 
 function renderStorage(){
-  var history = JSON.parse(localStorage.getItem('scores')) ||  [{ ag: 5}]
-  console.log(history)
+  // var history = JSON.parse(localStorage.getItem('scores')) ||  [{ ag: 5}]
+
   var myinitials = document.querySelector("#initials").value;
     console.log(myinitials)
     console.log(score)
     var myscore = {"initials" :myinitials , "score" :score}
-    localStorage.setItem("scores",JSON.stringify(myscore))
-    var historyElement = `<li>${Object.keys(score)[0]}: ${score[Object.keys(score)[0]]}</li>`
-    console.log(historyElement)
+    highscorearr.push(myscore);
+    storehighscores();
+  
   
 }
 

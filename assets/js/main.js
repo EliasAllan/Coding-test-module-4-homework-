@@ -47,7 +47,7 @@ var questions = [
 // count of the question that is displayed
 var questionNumber = 0;
 var highscoreEl = document.querySelector("#highscore");
-// need to keep score
+// score
 var highscorearr = [];
 var score = 0;
 var scoreEl = document.querySelector("#score");
@@ -57,11 +57,11 @@ scoreEl.setAttribute("style", "font-size: 23px");
 // need to keep the time
 var timeleft = 60;
 
+// Query selectors
 var timeEl = document.querySelector(".time");
 var startBtn = document.querySelector("#startbutton");
 var scorebutton = document.querySelector("#scorebutton");
 var SpanEl = document.querySelector("#title");
-
 var rightwrongEl = document.querySelector(".rightwrong");
 
 function startQuiz(event) {
@@ -72,7 +72,7 @@ function startQuiz(event) {
   startBtn.setAttribute("style", "display:none");
   SpanEl.setAttribute("style", "display:none");
 
-  // endQuiz();
+ 
 }
 
 function startTimer() {
@@ -176,8 +176,6 @@ function endQuiz() {
 }
 
 function renderStorage(){
-  // var history = JSON.parse(localStorage.getItem('scores')) ||  [{ ag: 5}]
-
   var myinitials = document.querySelector("#initials").value;
     console.log(myinitials)
     console.log(score)

@@ -163,25 +163,33 @@ function checkIfQuizOver() {
 }
 
 function endQuiz() {
-  event.preventDefault();
   console.log("ending quiz");
   var questionsEl = document.querySelector(".questions");
-  var highscoreEl = document.querySelector("#highscore");
+  // var highscoreEl = document.querySelector("#highscore");
   var formEl = document.querySelector("form");
   questionsEl.setAttribute("style", "display: none");
   timeEl.setAttribute("style", "display: none");
   formEl.classList.remove("hidden");
   console.log(formEl);
-  // renderStorage()
+  renderStorage()
 }
 
 function renderStorage(){
   var myinitials = document.querySelector("#initials").value;
     console.log(myinitials)
     console.log(score)
-    var myscore = {"initials" :myinitials , "score" :score}
+    if(myinitials !== ''){
+      var myscore = {"initials" :myinitials , "score" :score}
     highscorearr.push(myscore);
     storehighscores();
+    }
+
+  // need another function that displays the score 
+  // create new html elements using jquery or Javascript in a for loop ( Because it's an array)
+  // Review ( Activity 26 )
+  // use localstorage.getitem to retrieve data from local storage
+  // about 20 lines of code
+    
   
   
 }

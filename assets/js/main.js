@@ -60,6 +60,7 @@ var timeleft = 60;
 // Query selectors
 var timeEl = document.querySelector(".time");
 var startBtn = document.querySelector("#startbutton");
+var restartBtn = document.querySelector("#restart-btn");
 var scorebutton = document.querySelector("#scorebutton");
 var SpanEl = document.querySelector("#title");
 var rightwrongEl = document.querySelector(".rightwrong");
@@ -175,7 +176,7 @@ function endQuiz() {
   formEl.classList.remove("hidden");
 }
 
-function addToStorage(){
+function addToStorage(event){
   event.preventDefault();
   var myinitials = document.querySelector("#initials").value;
     console.log(myinitials)
@@ -185,6 +186,8 @@ function addToStorage(){
     highscorearr.push(myscore);
     storehighscores();
     renderHighScore();
+    formEl.setAttribute("style", "display: none");
+    restartBtn.classList.remove("hidden");
 
     }
 
@@ -200,20 +203,15 @@ highscoreEl.classList.remove("hidden");
     highScore.textContent = highscorearr[i].initials + " = " + highscorearr[0].score
     highscoreEl.append(highScore)
   }
-
-  // var highScoresEl = document.createElement("P")
-  // //modify
-  // highScoresEl.textContent = hsData.initials
 }
-  // need another function that displays the score 
-  // create new html elements using jquery or Javascript in a for loop ( Because it's an array)
-  // Review ( Activity 26 )
-  // use localstorage.getitem to retrieve data from local storage
-  // about 20 lines of code
-    
+  
+function refreshPage() {
+  location.reload()
+}    
   
   
 
 
+restartBtn.addEventListener("click",refreshPage );
 startBtn.addEventListener("click", startQuiz);
 scorebutton.addEventListener("click", addToStorage);

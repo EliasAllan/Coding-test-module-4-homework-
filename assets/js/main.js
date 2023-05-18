@@ -3,7 +3,7 @@
 // there may be more steps and corrections to be made in future
 
 // collection of objects that hold the questions
-console.log("let's crush this");
+console.log("Quiz logged");
 var currentQuestion;
 var questions = [
   {
@@ -63,7 +63,8 @@ var startBtn = document.querySelector("#startbutton");
 var scorebutton = document.querySelector("#scorebutton");
 var SpanEl = document.querySelector("#title");
 var rightwrongEl = document.querySelector(".rightwrong");
-
+ var formEl = document.querySelector("form");
+ 
 function startQuiz(event) {
   event.preventDefault();
   console.log(event.target);
@@ -84,6 +85,7 @@ function startTimer() {
       "You have " + timeleft + " seconds to finish the test ";
     if (timeleft === 0) {
       clearInterval(timer);
+      endQuiz();
     }
   }, 1000);
 }
@@ -130,6 +132,7 @@ function init() {
   if (storedscores !== null) {
     highscorearr = storedscores;
   }
+console.log("high score array")
 console.log(highscorearr)
   // This is a helper function that will render todos to the DOM
   // renderTodos();
@@ -151,7 +154,7 @@ function logCorrect() {
 function logWrong() {
   timeleft = timeleft - 5;
   score = score - 1;
-  rightwrongEl.textContent = "Wrong !!!";
+  rightwrongEl.textContent = "Wrong !!! -5 seconds ";
   rightwrongEl.setAttribute("style", "color: red");
 }
 
@@ -166,15 +169,14 @@ function endQuiz() {
   console.log("ending quiz");
   var questionsEl = document.querySelector(".questions");
   // var highscoreEl = document.querySelector("#highscore");
-  var formEl = document.querySelector("form");
+ 
   questionsEl.setAttribute("style", "display: none");
   timeEl.setAttribute("style", "display: none");
   formEl.classList.remove("hidden");
-  console.log(formEl);
-  renderStorage()
 }
 
-function renderStorage(){
+function addToStorage(){
+  event.preventDefault();
   var myinitials = document.querySelector("#initials").value;
     console.log(myinitials)
     console.log(score)
@@ -182,8 +184,27 @@ function renderStorage(){
       var myscore = {"initials" :myinitials , "score" :score}
     highscorearr.push(myscore);
     storehighscores();
+    renderHighScore();
+
     }
 
+    // var hsData = localStorage.getItem("initials");
+}
+
+function renderHighScore(){
+highscoreEl.classList.remove("hidden");
+  //create
+  for (let i = 0; i < highscorearr.length; i++){
+    var highScore = document.createElement("P");
+    console.log(highScore)
+    highScore.textContent = highscorearr[i].initials + " = " + highscorearr[0].score
+    highscoreEl.append(highScore)
+  }
+
+  // var highScoresEl = document.createElement("P")
+  // //modify
+  // highScoresEl.textContent = hsData.initials
+}
   // need another function that displays the score 
   // create new html elements using jquery or Javascript in a for loop ( Because it's an array)
   // Review ( Activity 26 )
@@ -192,8 +213,7 @@ function renderStorage(){
     
   
   
-}
 
 
 startBtn.addEventListener("click", startQuiz);
-scorebutton.addEventListener("click", endQuiz);
+scorebutton.addEventListener("click", addToStorage);
